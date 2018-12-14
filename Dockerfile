@@ -11,4 +11,7 @@ RUN mkdir /conf
 VOLUME /conf
 
 WORKDIR /frps
+
+EXPOSE 80 443 6000 7000 7500
+
 ENTRYPOINT ["./frps","-c","/conf/frps.ini"]
