@@ -15,7 +15,7 @@ WORKDIR /frps
 
 EXPOSE 80 443 6000 7000 7500
 
-ENTRYPOINT ["/bin/sh"]
-#ENTRYPOINT ["./frps","-c","/conf/frps.ini"]
+#ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["./frps","-c","/conf/frps.ini"]
 #ENTRYPOINT ["/frps", "frps"]
 #CMD ["-c", "/conf/frps.ini", "--log_file", "stdout"]
