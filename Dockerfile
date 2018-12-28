@@ -1,4 +1,4 @@
-FROM alpine
+FROM busybox
 
 ENV FRP_VERSION 0.22.0
 RUN wget https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz \
@@ -10,12 +10,8 @@ RUN wget https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_$
     && rm -rf frp_${FRP_VERSION}_linux_amd64*
 
 VOLUME /conf
+EXPOSE 80 443 6000 7000 7500
 
 WORKDIR /frps
 
-EXPOSE 80 443 6000 7000 7500
-
-#ENTRYPOINT ["/bin/sh"]
 ENTRYPOINT ["./frps","-c","/conf/frps.ini"]
-#ENTRYPOINT ["/frps", "frps"]
-#CMD ["-c", "/conf/frps.ini", "--log_file", "stdout"]
